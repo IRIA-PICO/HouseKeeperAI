@@ -53,6 +53,5 @@ TODO: completar cuando estén los scripts.
 
 ## Integrantes
 
-- [Nombre Apellido 1]
-- [Nombre Apellido 2]
-- [Nombre Apellido 3]
+- Iria Picó
+- Lucía Diez
