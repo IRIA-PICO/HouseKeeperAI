@@ -1,0 +1,40 @@
+# --- Entornos virtuales ---
+.venv/
+venv/
+env/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# --- Salidas de entrenamiento (se generan al entrenar) ---
+logs/
+checkpoints/
+runs/
+models/
+
+# --- Modelos entrenados y archivos pesados ---
+*.zip
+*.pt
+*.pth
+*.ckpt
+*.pkl
+
+# --- GIFs y vídeos pesados ---
+*.gif
+*.mp4
+# Si queremos subir algún GIF pequeño para el README, lo añadimos con:
+#   git add -f docs/ejemplo.gif
+
+# --- Archivos de editor y del sistema ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# NOTA: los CSV y las gráficas finales de docs/ y results/ SÍ se suben.
