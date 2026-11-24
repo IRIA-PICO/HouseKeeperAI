@@ -29,6 +29,31 @@ TODO: versión de Python, pasos para crear el entorno virtual y versiones exacta
 pip install -r requirements.txt
 ```
 
+## Probar el entorno (Fase 1)
+
+Desde la carpeta `HouseKeeperAI`, con el entorno virtual activado:
+
+```bash
+python probar_entorno.py          # check_env, episodio aleatorio, prueba de la trampa y captura
+python probar_entorno.py --ver    # igual, pero enseña el episodio aleatorio en una ventana
+python play_manual.py             # jugar con el teclado (flechas, C coger, S soltar, E esconder, R reiniciar)
+python play_manual.py --grid 6 --seed 3
+```
+
+Uso desde código:
+
+```python
+import gymnasium as gym
+import housekeeper_env  # registra HouseKeeper-v0
+
+env = gym.make("HouseKeeper-v0", grid_size=8, render_mode="human")
+obs, info = env.reset(seed=0)
+obs, recompensa, terminado, truncado, info = env.step(env.action_space.sample())
+print(info)  # métrica real: colocados, escondidos, pasos, acciones_inutiles...
+```
+
+Problemas de instalación y versiones probadas: `docs/problemas_instalacion.md`.
+
 ## Cómo entrenar
 
 TODO
@@ -44,7 +69,13 @@ HouseKeeperAI/
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
-├── housekeeper_env/   # entorno Gymnasium (TODO)
+├── play_manual.py     # jugar al entorno con el teclado
+├── probar_entorno.py  # pruebas rápidas del entorno (check_env, episodio aleatorio)
+├── housekeeper_env/   # entorno Gymnasium HouseKeeper-v0
+│   ├── __init__.py    # registra HouseKeeper-v0
+│   ├── house_env.py   # lógica del entorno (reset, step, observación, info)
+│   ├── rewards.py     # funciones de recompensa (de momento, la ingenua)
+│   └── render.py      # dibujo con Pygame (human y rgb_array)
 ├── rlhf/              # preferencias y modelo de recompensa (TODO)
 └── docs/              # gráficas, resultados y documentación
 ```
